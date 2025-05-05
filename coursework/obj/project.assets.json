@@ -8,19 +8,19 @@
     "net8.0": []
   },
   "packageFolders": {
-    "/home/kirill050905/.nuget/packages/": {}
+    "/home/kirill/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/kirill050905/projects/Uiniversity/coursework_on_the_topic_of_hierarchical_data_structures/coursework/coursework.csproj",
+      "projectUniqueName": "/home/kirill/projects/my_project/university/coursework_on_the_topic_of_hierarchical_data_structures/coursework/coursework.csproj",
       "projectName": "coursework",
-      "projectPath": "/home/kirill050905/projects/Uiniversity/coursework_on_the_topic_of_hierarchical_data_structures/coursework/coursework.csproj",
-      "packagesPath": "/home/kirill050905/.nuget/packages/",
-      "outputPath": "/home/kirill050905/projects/Uiniversity/coursework_on_the_topic_of_hierarchical_data_structures/coursework/obj/",
+      "projectPath": "/home/kirill/projects/my_project/university/coursework_on_the_topic_of_hierarchical_data_structures/coursework/coursework.csproj",
+      "packagesPath": "/home/kirill/.nuget/packages/",
+      "outputPath": "/home/kirill/projects/my_project/university/coursework_on_the_topic_of_hierarchical_data_structures/coursework/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/home/kirill050905/.nuget/NuGet/NuGet.Config"
+        "/home/kirill/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"

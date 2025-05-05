@@ -8,6 +8,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = coursework
-build_property.ProjectDir = /home/kirill050905/projects/Uiniversity/coursework_on_the_topic_of_hierarchical_data_structures/coursework/
+build_property.ProjectDir = /home/kirill/projects/my_project/university/coursework_on_the_topic_of_hierarchical_data_structures/coursework/
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
