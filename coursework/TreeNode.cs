@@ -1,15 +1,13 @@
 using System;
 using System.Collections.Generic;
 
-#nullable enable
-
-public class TreeNodeIER
+public class Node
 {
     public Guid Id { get; }
     public object Data { get; set; }
     public Type? TypeData => Data?.GetType();
-    public List<TreeNodeIER> Children { get; private set; }
-    public TreeNodeIER? Parent { get; private set; }
+    public List<Node> Children { get; private set; }
+    public Node? Parent { get; private set; }
 
     public bool IsRoot => Parent == null;
     public bool IsLeaf => Children.Count == 0;
@@ -29,24 +27,16 @@ public class TreeNodeIER
         }
     }
 
-    private static readonly Dictionary<Guid, TreeNodeIER> s_nodesById = new();
-
-    public TreeNodeIER? this[Guid id] => 
-        s_nodesById.TryGetValue(id, out var node) ? node : null;
-
-    public static TreeNodeIER? GetById(Guid id) => 
-    s_nodesById.TryGetValue(id, out var node) ? node : null;
-
-    public TreeNodeIER(object data)
+    public Node(object data)
     {
         Data = data;
         Id = Guid.NewGuid();
-        Children = new List<TreeNodeIER>();
+        Children = new List<Node>();
         Parent = null;
-        s_nodesById.Add(Id, this);
+        Tree.AddNode(this);
     }
 
-    public void AddChild(TreeNodeIER child)
+    public void AddChild(Node child)
     {
         if (child == null) throw new ArgumentNullException(nameof(child));
 
@@ -63,7 +53,7 @@ public class TreeNodeIER
             Parent.Children.Remove(this);
         }
 
-        s_nodesById.Remove(Id);
+        Tree.RemoveNode(Id);
 
         foreach (var child in Children.ToList())
         {
@@ -73,7 +63,7 @@ public class TreeNodeIER
         Children.Clear();
     }
 
-    public TreeNodeIER? Find(Predicate<object> predicate)
+    public Node? Find(Predicate<object> predicate)
     {
         if (predicate(Data)) return this;
 
@@ -86,7 +76,7 @@ public class TreeNodeIER
         return null;
     }
 
-    public IEnumerable<TreeNodeIER> TraverseDepthFirst()
+    public IEnumerable<Node> TraverseDepthFirst()
     {
         yield return this;
 
@@ -99,9 +89,9 @@ public class TreeNodeIER
         }
     }
 
-    public IEnumerable<TreeNodeIER> TraverseBreadthFirst()
+    public IEnumerable<Node> TraverseBreadthFirst()
     {
-        Queue<TreeNodeIER> queue = new();
+        Queue<Node> queue = new();
         queue.Enqueue(this);
 
         while (queue.Count > 0)

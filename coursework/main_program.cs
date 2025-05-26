@@ -7,26 +7,28 @@ class Program
 {
     static void Main()
     {
-        var ceo = new TreeNodeIER(new Employee("Иванов Иван", "Генеральный директор"));
+        // Создание структуры компании через новый Tree и Node
 
-        var financeDept = new TreeNodeIER(new Employee("Петрова Мария", "Финансовый директор"));
-        var chiefAccountant = new TreeNodeIER(new Employee("Сидорова Елена", "Главный бухгалтер"));
-        var accountant1 = new TreeNodeIER(new Employee("Кузнецов Алексей", "Бухгалтер"));
+        var ceo = Tree.CreateRoot(new Employee("Иванов Иван", "Генеральный директор"));
+
+        var financeDept = new Node(new Employee("Петрова Мария", "Финансовый директор"));
+        var chiefAccountant = new Node(new Employee("Сидорова Елена", "Главный бухгалтер"));
+        var accountant1 = new Node(new Employee("Кузнецов Алексей", "Бухгалтер"));
 
         financeDept.AddChild(chiefAccountant);
         financeDept.AddChild(accountant1);
         ceo.AddChild(financeDept);
 
-        var devDept = new TreeNodeIER(new Employee("Николаев Артём", "Технический директор"));
-        var developer1 = new TreeNodeIER(new Employee("Смирнов Дмитрий", "Разработчик C#"));
-        var developer2 = new TreeNodeIER(new Employee("Васильев Павел", "Разработчик Python"));
+        var devDept = new Node(new Employee("Николаев Артём", "Технический директор"));
+        var developer1 = new Node(new Employee("Смирнов Дмитрий", "Разработчик C#"));
+        var developer2 = new Node(new Employee("Васильев Павел", "Разработчик Python"));
 
         devDept.AddChild(developer1);
         devDept.AddChild(developer2);
         ceo.AddChild(devDept);
 
-        var hrDept = new TreeNodeIER(new Employee("Михайлова Ольга", "HR-директор"));
-        var hrManager = new TreeNodeIER(new Employee("Алексеева Наталья", "HR-менеджер"));
+        var hrDept = new Node(new Employee("Михайлова Ольга", "HR-директор"));
+        var hrManager = new Node(new Employee("Алексеева Наталья", "HR-менеджер"));
 
         hrDept.AddChild(hrManager);
         ceo.AddChild(hrDept);
@@ -45,7 +47,7 @@ class Program
 
         Console.WriteLine("=== Получение сотрудника по ID ===");
         Guid idToFind = developer1.Id;
-        var foundById = TreeNodeIER.GetById(idToFind);
+        var foundById = Tree.GetById(idToFind);
         Console.WriteLine($"Найден сотрудник по ID: {foundById?.Data}");
         Console.WriteLine();
 
